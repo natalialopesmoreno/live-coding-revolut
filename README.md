@@ -61,6 +61,8 @@ public class Main {
         System.out.println(lb.getServer()); // Output: 192.168.0.1 (Loop)
     }
 }
+```
+
 
 #### Using Random
 Ideal when servers have similar capacities and strict ordering is not required.
@@ -82,7 +84,8 @@ public class App {
     }
 }
 
----
+```
+
 
 ## 🧪 Testing
 
@@ -98,7 +101,7 @@ To run the tests, execute the following command in the project root (if using Ma
 
 ```bash
 mvn test
-
+```
 
 ## ⚙️ Technical Decisions
 
