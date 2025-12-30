@@ -1,12 +1,10 @@
-import org.example.LoadBalancer;
-import org.example.RandomSelector;
-import org.example.RoudRobinSelector;
-import org.example.SelectionStrategy;
+import load_balancer.LoadBalancer;
+import load_balancer.RandomSelector;
+import load_balancer.RoudRobinSelector;
+import load_balancer.SelectionStrategy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public class LoadBalancerTest {
 

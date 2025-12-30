@@ -1,4 +1,4 @@
-package org.example;
+package load_balancer;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
