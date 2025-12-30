@@ -61,3 +61,49 @@ public class Main {
         System.out.println(lb.getServer()); // Output: 192.168.0.1 (Loop)
     }
 }
+
+#### Using Random
+Ideal when servers have similar capacities and strict ordering is not required.
+
+```java
+import load_balancer.LoadBalancer;
+import load_balancer.RandomSelector;
+
+public class App {
+    public static void main(String[] args) {
+        LoadBalancer lb = new LoadBalancer(new RandomSelector());
+        
+        lb.registerServer("Server_A");
+        lb.registerServer("Server_B");
+        lb.registerServer("Server_C");
+
+        // Returns a random server from the list
+        System.out.println("Destination: " + lb.getServer());
+    }
+}
+
+---
+
+## 🧪 Testing
+
+The project includes a comprehensive unit test suite using **JUnit 5**. The tests cover:
+
+* ✅ Successful server registration.
+* ✅ Error validation (null, empty, duplicates).
+* ✅ Capacity limits (Max Capacity).
+* ✅ Strategy behavior verification (Random vs. Round Robin).
+* ✅ State exceptions (Empty server list).
+
+To run the tests, execute the following command in the project root (if using Maven):
+
+```bash
+mvn test
+
+
+## ⚙️ Technical Decisions
+
+| Component | Decision | Rationale |
+| :--- | :--- | :--- |
+| **Server List** | `CopyOnWriteArrayList` | Load Balancers typically handle **many reads** (`getServer`) and **few writes** (`registerServer`). This list ensures thread-safe reads without the overhead of heavy locking mechanisms. |
+| **Concurrency** | `AtomicInteger` | In `RoudRobinSelector`, we use atomic integers to ensure that two threads do not grab the same index simultaneously, avoiding the performance cost of a `synchronized` block. |
+| **Randomness** | `ThreadLocalRandom` | More performant than `Math.random()` or `new Random()` in multi-threaded environments, as it avoids contention on the random number generator's seed. |
