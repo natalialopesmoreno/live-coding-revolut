@@ -1,6 +1,6 @@
 import load_balancer.LoadBalancer;
 import load_balancer.RandomSelector;
-import load_balancer.RoudRobinSelector;
+import load_balancer.RoundRobinSelector;
 import load_balancer.SelectionStrategy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -105,7 +105,7 @@ public class LoadBalancerTest {
 
     @Test
     void shouldReturnNextServerBasedOnRoundRobinSelectionWhenServersListIsNotEmpty(){
-        SelectionStrategy selector = new RoudRobinSelector();
+        SelectionStrategy selector = new RoundRobinSelector();
         balancer = new LoadBalancer(selector);
 
         balancer.registerServer("Address1");

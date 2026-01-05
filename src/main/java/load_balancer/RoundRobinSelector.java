@@ -3,7 +3,7 @@ package load_balancer;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class RoudRobinSelector implements SelectionStrategy{
+public class RoundRobinSelector implements SelectionStrategy{
 
     private AtomicInteger counter = new AtomicInteger(0);
     @Override
